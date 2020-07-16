@@ -1,0 +1,19 @@
+パン屋一覧<br>
+ <table class ='table'>
+  <thead>
+   <tr>
+   	<th>ShopID</th>
+   	<th>店名</th>
+   	<th>ステータス</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @shops.each do |shop| %>
+    <tr>
+     <td><%= shop.id %></td>
+     <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td>
+     <td><%= shop.shop_quit %></td>
+    </tr>
+   <% end %>
+  </tbody>
+ </table>

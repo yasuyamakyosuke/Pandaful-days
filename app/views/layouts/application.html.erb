@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PandafulDays</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <div class="row">
+            <a class="navbar-brand" href="/"><h1>PandafulDays</h1></a>
+             <% if admin_signed_in? %>
+              <li class="list-items"><%= link_to '店舗一覧', admin_shops_path %></li>
+              <li class="list-items"><%= link_to 'User一覧', admin_users_path %></li>
+              <li class="list-items"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
+              <li class="list-items"><%= link_to '駅一覧', admin_stations_path %></li>
+              <li class="list-items"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+             <% elsif user_signed_in? %>
+              <li class="list-items"><%= link_to 'PandafulDaysとは', home_about_path %></li>
+              <li class="list-items"><%= link_to 'マイページ', user_path(current_user) %></li>
+              <li class="list-items"><%= link_to '検索する', shop_search_path %></li>
+              <li class="list-items"><%= link_to 'ログアウト',  destroy_user_session_path, method: :delete %></li>
+             <% else %>
+              <li class="list-items"><%= link_to '検索する', shop_search_path %></li>
+              <li class="list-items"><%= link_to '新規登録', new_user_registration_path %></li>
+              <li class="list-items"><%= link_to 'ログイン', new_user_session_path %></li>
+             <% end %>
+      </div>
+    </div>
+  </header>
+    <%= yield %>
+  </body>
+</html>

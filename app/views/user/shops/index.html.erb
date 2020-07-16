@@ -1,0 +1,10 @@
+検索結果一覧
+
+<table class='table'>
+  <% @shops.each do |shop| %>
+   <tr>
+     <td><%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %></td>
+     <td><%= attachment_image_tag shop, :main, :fill, 150, 150 %>
+   </tr>
+  <% end %>
+</table>

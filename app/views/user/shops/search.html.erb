@@ -1,0 +1,9 @@
+検索する
+<%= form_with(url:shops_path,method:'get',local:true) do |form| %>
+  <p>
+    <%= form.text_field :name, value:params[:shop_name] %>
+    <%= form.collection_select(:genre_id,Genre.all, :id, :genre_name) %>
+     <%= form.collection_select(:station_id,Station.all, :id, :station_name) %>
+    <%= submit_tag "店を検索する", :name => nil %>
+  </p>
+<% end %>

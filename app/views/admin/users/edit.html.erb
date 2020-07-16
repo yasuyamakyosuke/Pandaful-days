@@ -1,0 +1,31 @@
+<div class ="container">
+ <div class ="row">
+  <%= @user.name %>さんのUser情報編集<br>
+
+  <table class ='table'>
+   <tr>
+   	<th>UserID</th>
+   	<td><%= @user.id %></td>
+   </tr>
+   <%= form_with(model:@user, url:admin_user_path,local:true) do |form| %>
+    <tr>
+     <th><%= form.label :名前 %></th>
+     <td><%= form.text_field :name%></td>
+    </tr>
+    <tr>
+     <th><%= form.label :メールアドレス %></th>
+     <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+     <th><%= form.label :Userステータス %></th>
+     <td><%= form.radio_button :quit, :true %>
+           <%= form.label :quit, "有効", {value: :true, style: "display: inline-block;"} %>
+           <%= form.radio_button :quit, :false %>
+           <%= form.label :quit, "無効", {value: :false, style: "display: inline-block;"} %>
+     </td>
+    </tr>
+    <th><%= form.submit :変更を保存する  %></th>
+   <% end %>
+  </table>
+ </div>
+</div>
