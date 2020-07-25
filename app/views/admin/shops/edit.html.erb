@@ -1,52 +1,58 @@
 <div class ="container">
- <div class ="row">
-  <div class ="col-xs-3">
-  店舗編集
-   <%= form_with(model:@shop, url:admin_shop_path) do |form| %>
-    <%= attachment_image_tag @shop, :main, :fill, 150, 150 %>
-    <%= form.attachment_field :main %>
-    <% @shop.shop_images.each do |image| %>
-  	<%= attachment_image_tag image, :image, :fill,100, 100 %>
-  	<% end %>
-    <%= form.attachment_field :shop_images_images, multiple: true %>
+  <div class ="row">
+    <div class ="col-xs-3">
+      <h2>店舗編集</h2>
+        <%= form_with(model:@shop, url:admin_shop_path) do |form| %>
+          <%= attachment_image_tag @shop, :main, :fill, 150, 150 %>
+          <%= form.attachment_field :main %>
+        <% @shop.shop_images.each do |image| %>
+  	      <%= attachment_image_tag image, :image, :fill,100, 100 %>
+  	    <% end %>
+          <%= form.attachment_field :shop_images_images, multiple: true %>
+    </div>
+    <div class ="col-xs-9">
+      <table class ='table'>
+   	    <tr>
+   	      <th><%= form.label :店名 %></th>
+   	      <td><%= form.text_field :shop_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th><%= form.label :店紹介文 %></th>
+   	      <td><%= form.text_area :shop_profile %></td>
+   	    </tr>
+   	    <tr>
+   	      <th><%= form.label :ジャンル %></th>
+   	      <td><%= form.collection_select(:genre_id,Genre.all, :id, :genre_name) %></td>
+   	    </tr>
+   	    <tr>
+   	      <th><%= form.label :駅 %></th>
+   	      <td><%= form.collection_select(:station_id,Station.all, :id, :station_name) %></td>
+   	    </tr>
+   	    <tr>
+   	      <th><%= form.label :住所 %></th>
+   	      <td><%= form.text_field :shop_address %></td>
+   	    </tr>
+   	    <tr>
+   	      <th><%= form.label :営業時間 %></th>
+   	      <td><%= form.text_field :shop_time %>~<%=form.text_field :finish_time %></td>
+   	    </tr>
+        <tr>
+          <th><%= form.label :休日 %></th>
+          <td><%= form.text_field :holiday %></td>
+        </tr>
+   	    <tr>
+   	      <th><%= form.label :ホームページ %></th>
+   	      <td><%= form.text_field :shop_homepage %></td>
+   	    </tr>
+   	    <tr>
+   	      <th><%= form.label :店ステータス %></th>
+	        <td><%= form.select :shop_quit, [["有効", true], ["無効", false]] %></td>
+	      </tr>
+	      <tr>
+	        <th><%= form.submit %></th>
+	      </tr>
+       <% end %>
+      </table>
+    </div>
   </div>
-  <div class ="col-xs-9">
-   <table class ='table'>
-   	<tr>
-   	 <th><%= form.label :店名 %></th>
-   	 <td><%= form.text_field :shop_name %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :店紹介文 %></th>
-   	 <td><%= form.text_area :shop_profile %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :ジャンル %></th>
-   	 <td><%= form.collection_select(:genre_id,Genre.all, :id, :genre_name) %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :駅 %></th>
-   	 <td><%= form.collection_select(:station_id,Station.all, :id, :station_name) %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :住所 %></th>
-   	 <td><%= form.text_field :shop_address %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :営業時間 %></th>
-   	 <td><%= form.text_field :shop_time %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :ホームページ %></th>
-   	 <td><%= form.text_field :shop_homepage %></td>
-   	</tr>
-   	<tr>
-   	 <th><%= form.label :店ステータス %></th>
-	 <td><%= form.select :shop_quit, [["有効", true], ["無効", false]] %></td>
-	</tr>
-	<tr>
-	 <th><%= form.submit %></th>
-	</tr>
-
-
-   <% end %>
+</div>

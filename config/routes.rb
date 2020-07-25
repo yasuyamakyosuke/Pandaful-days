@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user/Favorites'
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
     get 'confirm' => 'users#confirm'
     delete '/users/:id' => 'users#hide',as: :hide
     resources :users, only:[:show, :edit, :update]
+    get 'recommends/thank' => 'recommends#thank'
+    resources :recommends, only:[:new, :create, :index, :show, :edit, :update, :destroy]
     root :to => 'homes#top'
     get 'home/about' => 'homes#about'
 

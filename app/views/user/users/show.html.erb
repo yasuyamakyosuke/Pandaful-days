@@ -1,20 +1,23 @@
 <div class ="container">
   <div class ="row">
-  会員詳細<br>
-   <table class ='table'>
-   	<tr>
-   	 <th>UserID</th>
-   	 <td><%= @user.id %></td>
-   	</tr>
-   	<tr>
-   	 <th>名前</th>
-   	 <td><%= @user.name %></td>
-   	</tr>
-   	<tr>
-   	 <th>メールアドレス</th>
-   	 <td><%= @user.email %></td>
-   	</tr>
-   </table>
+    <h3>会員詳細</h3><br>
+    <table class ='table'>
+      <tr>
+        <th>User画像</th>
+        <td><%= attachment_image_tag @user, :image, :fill, 150, 150 %></td>
+   	  <tr>
+   	    <th>名前</th>
+   	    <td><%= @user.name %></td>
+   	  </tr>
+   	  <tr>
+   	    <th>メールアドレス</th>
+   	    <td><%= @user.email %></td>
+    	</tr>
+      <tr>
+        <th>自己紹介文</th>
+        <td><%= @user.profile %></td>
+      </tr>
+    </table>
    <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
   </div>
 </div>

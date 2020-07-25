@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_110956) do
+ActiveRecord::Schema.define(version: 2020_07_25_111705) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,15 +24,11 @@ ActiveRecord::Schema.define(version: 2020_07_16_110956) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "average_caches", force: :cascade do |t|
-    t.integer "rater_id"
-    t.string "rateable_type"
-    t.integer "rateable_id"
-    t.float "avg", null: false
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -42,36 +38,17 @@ ActiveRecord::Schema.define(version: 2020_07_16_110956) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "overall_averages", force: :cascade do |t|
-    t.string "rateable_type"
-    t.integer "rateable_id"
-    t.float "overall_avg", null: false
+  create_table "recommends", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "recommend_shop_name"
+    t.text "recommend_shop_profile"
+    t.string "recommend_shop_address"
+    t.text "recommend_shop_homepage"
+    t.string "recommend_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
-  end
-
-  create_table "rates", force: :cascade do |t|
-    t.integer "rater_id"
-    t.string "rateable_type"
-    t.integer "rateable_id"
-    t.float "stars", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_rates_on_rater_id"
-  end
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.string "cacheable_type"
-    t.integer "cacheable_id"
-    t.float "avg", null: false
-    t.integer "qty", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+    t.integer "genre_id"
+    t.integer "station_id"
   end
 
   create_table "shop_comments", force: :cascade do |t|
@@ -102,6 +79,11 @@ ActiveRecord::Schema.define(version: 2020_07_16_110956) do
     t.boolean "shop_quit", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.time "finish_time"
+    t.string "holiday"
+    t.float "average_score"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -122,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_110956) do
     t.datetime "updated_at", null: false
     t.boolean "quit", default: true
     t.datetime "deleted_at"
+    t.string "image_id"
+    t.text "profile"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

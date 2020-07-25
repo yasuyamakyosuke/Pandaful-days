@@ -1,10 +1,21 @@
-検索結果一覧
-
-<table class='table'>
-  <% @shops.each do |shop| %>
-   <tr>
-     <td><%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %></td>
-     <td><%= attachment_image_tag shop, :main, :fill, 150, 150 %>
-   </tr>
-  <% end %>
-</table>
+<div class ="container">
+  <div class ="row">
+    <h2>検索結果一覧</h2>
+    <%= form_with(url:shops_path,local:true, method: :get) do |form| %>
+      <%= form.hidden_field :name,value:params[:name] %>
+      <%= form.hidden_field :genre_id,value:params[:genre_id] %>
+      <%= form.hidden_field :station_id,value:params[:station_id] %>
+      <%= form.select :sort_type,[["コメント数","shop_comment_count"],["店名","shop_name"]],include_blank: true %>
+      <%= form.submit :並び替える %>
+    <% end %>
+    <table class='table'>
+      <% @shops.each do |shop| %>
+        <tr>
+          <td><%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %></td>
+          <td><%= attachment_image_tag shop, :main, :fill, 150, 150 %></td>
+          <td><%= "#{shop.shop_comments.count}コメント" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

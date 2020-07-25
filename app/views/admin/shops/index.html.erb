@@ -1,19 +1,25 @@
-パン屋一覧<br>
- <table class ='table'>
-  <thead>
-   <tr>
-   	<th>ShopID</th>
-   	<th>店名</th>
-   	<th>ステータス</th>
-   </tr>
-  </thead>
-  <tbody>
-   <% @shops.each do |shop| %>
-    <tr>
-     <td><%= shop.id %></td>
-     <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td>
-     <td><%= shop.shop_quit %></td>
-    </tr>
-   <% end %>
-  </tbody>
- </table>
+<div class ="container">
+  <div class ="row">
+    <h2>パン屋一覧</h2>
+
+      <%= link_to "新規登録", new_admin_shop_path,data: { "turbolinks"=> false } %>
+    <table class ='table table-striped'>
+      <thead>
+        <tr>
+   	      <th>ShopID</th>
+   	      <th>店名</th>
+   	      <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shops.each do |shop| %>
+        <tr>
+          <td><%= shop.id %></td>
+          <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td>
+          <td><%= shop.shop_quit %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,54 +1,58 @@
 <div class ="container">
- <div class ="row">
-  <div class ="col-xs-3">
-  	<h2>店舗詳細ページ</h2>
-  	<%= attachment_image_tag @shop, :main, :fill, 150, 150 %>
-  	<% @shop.shop_images.each do |image| %>
-  	  <%= attachment_image_tag image, :image, :fill,100, 100 %>
-  	<% end %>
-  </div>
+  <div class ="row">
+    <div class ="col-xs-3">
+  	  <h2>店舗詳細ページ</h2>
+  	    <%= attachment_image_tag @shop, :main, :fill, 150, 150 %><br><br>
+  	    <% @shop.shop_images.each do |image| %>
+  	      <%= attachment_image_tag image, :image, :fill,100, 100 %>
+  	    <% end %>
+    </div>
 
-  <div class ="col-xs-9">
-   <table class ='table'>
-   	<tr>
-   	 <th>店名</th>
-   	 <td><%= @shop.shop_name %></td>
-   	</tr>
-   	<tr>
-   	 <th>店紹介文</th>
-   	 <td><%= @shop.shop_profile %></td>
-   	</tr>
-   	<tr>
-   	 <th>ジャンル</th>
-   	 <td><%= @shop.genre.genre_name %></td>
-   	</tr>
-   	<tr>
-   	 <th>駅</th>
-   	 <td><%= @shop.station.station_name %></td>
-   	</tr>
-   	<tr>
-   	 <th>住所</th>
-   	 <td><%= @shop.shop_address %></td>
-   	</tr>
-   	<tr>
-   	 <th>営業時間</th>
-   	 <td><%= @shop.shop_time %></td>
-   	</tr>
-   	<tr>
-   	 <th>ホームページ</th>
-   	 <td><%= @shop.shop_homepage %></td>
-   	</tr>
-   	<tr>
-   	 <th>店ステータス</th>
-   	 <td><% if @shop.shop_quit %>
-   	 	 有効
-   	 	 <% else %>
-   	 	 無効
-   	 	 <% end %>
-   	 </td>
-   	</tr>
-   </table>
-   <%= link_to "編集", edit_admin_shop_path(@shop.id) %>
- </div>
+    <div class ="col-xs-9">
+      <table class ='table'>
+   	    <tr>
+   	      <th>店名</th>
+   	      <td><%= @shop.shop_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>店紹介文</th>
+   	      <td><%= @shop.shop_profile %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>ジャンル</th>
+   	      <td><%= @shop.genre.genre_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>駅</th>
+   	      <td><%= @shop.station.station_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>住所</th>
+   	      <td><%= @shop.shop_address %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>営業時間</th>
+   	      <td><%= @shop.shop_time.strftime('%H:%M') %>~<%= @shop.finish_time.strftime('%H:%M') %></td>
+        </tr>
+        <tr>
+          <th>休日</th>
+          <td><%= @shop.holiday %></td>
+        </tr>
+        <tr>
+   	      <th>ホームページ</th>
+   	      <td><%= @shop.shop_homepage %></td>
+   	    </tr>
+       	<tr>
+   	      <th>店ステータス</th>
+   	      <td><% if @shop.shop_quit %>
+   	 	        <h4>有効</h4>
+   	 	        <% else %>
+   	 	        <h4>無効</h4>
+   	 	        <% end %>
+   	      </td>
+   	    </tr>
+      </table>
+     <%= link_to "編集", edit_admin_shop_path(@shop.id) %>
+  </div>
 </div>
 

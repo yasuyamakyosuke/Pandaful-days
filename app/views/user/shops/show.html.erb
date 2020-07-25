@@ -1,57 +1,112 @@
 <div class ="container">
- <div class ="row">
-  <div class ="col-xs-3">
-  	<h2>店舗詳細ページ</h2>
-  	<%= attachment_image_tag @shop, :main, :fill, 150, 150 %>
-  	<% @shop.shop_images.each do |image| %>
-  	  <%= attachment_image_tag image, :image, :fill,100, 100 %>
-  	<% end %>
-  </div>
+  <div class ="row">
+    <div class ="col-xs-3">
+  	  <h2>店舗詳細ページ</h2>
+  	  <%= attachment_image_tag @shop, :main, :fill, 150, 150 %>
+  	  <% @shop.shop_images.each do |image| %>
+  	    <%= attachment_image_tag image, :image, :fill,100, 100 %>
+  	  <% end %>
+    </div>
 
-  <div class ="col-xs-9">
-   <table class ='table'>
-   	<tr>
-   	 <th>店名</th>
-   	 <td><%= @shop.shop_name %></td>
-   	</tr>
-   	<tr>
-   	 <th>店紹介文</th>
-   	 <td><%= @shop.shop_profile %></td>
-   	</tr>
-   	<tr>
-   	 <th>ジャンル</th>
-   	 <td><%= @shop.genre.genre_name %></td>
-   	</tr>
-   	<tr>
-   	 <th>駅</th>
-   	 <td><%= @shop.station.station_name %></td>
-   	</tr>
-   	<tr>
-   	 <th>住所</th>
-   	 <td><%= @shop.shop_address %></td>
-   	</tr>
-   	<tr>
-   	 <th>営業時間</th>
-   	 <td><%= @shop.shop_time %></td>
-   	</tr>
-   	<tr>
-   	 <th>ホームページ</th>
-   	 <td><%= @shop.shop_homepage %></td>
-   	</tr>
-   </table>
-   <% @shop.shop_comments.each do |shop_comment| %>
-    <%= shop_comment.user.name %>
-    <%= shop_comment.created_at.strftime('%Y/%m/%d') %>
-    <%= shop_comment.comment %>
-    <% if shop_comment.user == current_user %>
-     <%= link_to "削除", shop_shop_comment_path(shop_comment.shop, shop_comment), method: :delete %>
-    <% end %>
-   <% end %>
-  Good : <%= rating_for @shop_comment, 'good', star: 5 %>
-   <%= form_for [@shop, @shop_comment] do |f| %>
-    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-   <% end %>
- </div>
+    <div class ="col-xs-9">
+      <table class ='table'>
+   	    <tr>
+   	      <th>店名</th>
+   	      <td><%= @shop.shop_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>店紹介文</th>
+   	      <td><%= @shop.shop_profile %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>ジャンル</th>
+   	      <td><%= @shop.genre.genre_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>駅</th>
+   	      <td><%= @shop.station.station_name %></td>
+   	    </tr>
+   	    <tr>
+   	      <th>住所</th>
+   	      <td><%= @shop.shop_address %>
+            <div id="map">
+　          </div>
+          </td>
+   	    <tr>
+   	      <th>営業時間</th>
+   	      <td><%= @shop.shop_time.strftime('%H:%M') %></td>
+   	    </tr>
+        <tr>
+          <th>休日</th>
+          <td><%= @shop.holiday %>
+        </td>
+   	    <tr>
+   	      <th>ホームページ</th>
+   	      <td><%= @shop.shop_homepage %></td>
+   	    </tr>
+      </table>
+        <h2>コメント</h2>
+        <% @shop.shop_comments.each do |shop_comment| %>
+          <%= shop_comment.user.name %>
+          <%= attachment_image_tag shop_comment.user,:image, :fill,40, 0 %>
+          <%= shop_comment.created_at.strftime('%Y/%m/%d') %>
+          <div id="star-rate-<%= shop_comment.id %>"></div>
+            <script>
+              $('#star-rate-<%= shop_comment.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= shop_comment.score %>,
+              });
+            </script>
+          <%= shop_comment.comment %><br>
+          <% if shop_comment.user == current_user %>
+            <%= link_to "削除", shop_shop_comment_path(shop_comment.shop, shop_comment), method: :delete %>
+          <% end %>
+        <% end %>
+      <% if user_signed_in? %>
+   　　　<%= form_for [@shop, @shop_comment] do |f| %>
+     　　  <div class="form-group row" id="star">
+       　    <%= f.label :score,'評価 ', class:'col-md-3 col-form-label' %>
+             <%= f.hidden_field :score, id: :review_star %>
+          </div>
+          <script>
+            $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'shop_comment[score]',
+            half: true
+            });
+          </script>
+          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
+      <% else %>
+        <a>会員登録して評価・コメントしよう</a>
+      <% end %>
+  </div>
 </div>
+
+<style>
+#map{
+  height: 250px; width: 300px;
+}
+</style>
+
+<script>
+  let mapInstance //この変数はmap.js.erbでも使うのでタイプミスに注意
+
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat:<%= @shop.latitude %>, lng:<%= @shop.longitude %>},
+    zoom: 15
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC30kzKCnQ8odDeG-M8ho3u14N5p-aXbXQ&callback=initMap" async defer></script>
 

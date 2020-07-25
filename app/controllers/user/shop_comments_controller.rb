@@ -16,7 +16,7 @@ class User::ShopCommentsController < ApplicationController
 
 	private
 	def shop_comment_params
-		params.require(:shop_comment).permit(:comment)
+		params.require(:shop_comment).permit(:comment,:score)
 	end
 
 
