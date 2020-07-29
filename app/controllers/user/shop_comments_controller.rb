@@ -1,12 +1,18 @@
 class User::ShopCommentsController < ApplicationController
 
-	def create
-		shop = Shop.find(params[:shop_id])
-		comment = ShopComment.new(shop_comment_params)
-		comment.user_id = current_user.id
-		comment.shop_id = shop.id
-		comment.save
-		redirect_to shop_path(shop)
+    def create
+        shop = Shop.find(params[:shop_id])
+        shop.shop_comments.build(
+            comment: shop_comment_params[:comment],
+            score: shop_comment_params[:score],
+            user_id: current_user.id
+        )
+        if shop.save!
+            #ShopComent.averrage #shop_id を指定するように変更する
+            shop.average_score = ShopComment.shop_score_average(shop.id)
+            shop.save
+            redirect_to shop_path(shop)
+        end
 	end
 
 	def destroy

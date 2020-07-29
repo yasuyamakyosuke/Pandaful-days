@@ -1,11 +1,34 @@
 <div class ="container">
-  <div class ="row">　　
+  <div class ="row justify-content-center">　　
     <h2>検索する</h2>
+  </div>
+  <div class ="row justify-content-center">
+    <div class="search_container">
     <%= form_with(url:shops_path,method:'get',local:true) do |form| %>
       <%= form.text_field :name,:placeholder => "店名を入力", value:params[:shop_name] %>
-      <%= form.collection_select(:genre_id,Genre.all, :id, :genre_name,include_blank: true) %>
+      <%= form.collection_select(:genre_id,Genre.all, :id, :genre_name,include_blank: "選択してください") %>
       <%= form.collection_select(:station_id,Station.all, :id, :station_name,include_blank: true) %>
       <%= submit_tag "店を検索する", :name => nil %>
     <% end %>
+    </div>
+  </div>
+  <div class="row align-items-center justify-content-center">
+    <div class="col-3 align-self-center">
+        <%= image_tag 'melon.jpg',size: "100x100" %><br>
+      	<%= link_to "メロンパン",shops_path(genre_id: 1) %>
+    </div>
+    <div class="col-3">
+      	<%= image_tag 'furance.jpg',size: "100x100" %><br>
+      	<%= link_to "フランスパン",shops_path(genre_id: 1) %>
+    </div>
+    <div class="col-3">
+      	<%= image_tag 'furance.jpg',size: "100x100" %><br>
+      	<%= link_to "フランスパン",shops_path(genre_id: 1) %>
+    </div>
+    <div class="col-3">
+      	<%= image_tag 'furance.jpg',size: "100x100" %><br>
+      	<%= link_to "フランスパン",shops_path(genre_id: 1) %>
+    </div>
+ </div>
   </div>
 </div>

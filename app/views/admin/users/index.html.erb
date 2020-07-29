@@ -17,9 +17,9 @@
    	      <td><%= link_to user.name, admin_user_path(user.id) %></td>
    	      <td><%= user.email %></td>
    	      <td><% if user.quit %>
-   		        <h4>有効</h4>
+   		        <h5>有効</h5>
    		        <% else %>
-   		        <h4>退会済み</h4>
+   		        <h5>退会済み</h5>
    		        <% end %>
    	      </td>
         </tr>

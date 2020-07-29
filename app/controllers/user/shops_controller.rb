@@ -11,8 +11,13 @@ class User::ShopsController < ApplicationController
 		if params[:sort_type] == 'shop_comment_count'
           @shops = Shop.find(@shops.includes(:shop_comments).group('shop_comments.shop_id').order('count(shop_comments.shop_id) desc').pluck(:id))
         elsif params[:sort_type] == 'shop_name'
-          @shops = @shops.order('shop_name asc')
+              @shops = @shops.order('shop_name asc')
+        elsif params[:sort_type] == 'average_score'
+              @shops = @shops.order('average_score desc')
         end
+        @shops= @shops.page(params[:page])
+
+
 
 	end
 

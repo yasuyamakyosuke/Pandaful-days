@@ -1,7 +1,9 @@
 <div class ="container">
   <div class ="row">
-    <div class ="col-xs-9">
-      <h4>駅一覧・追加</h4>
+    <p class ="content1" >
+    <div class ="col-md-12">
+      <h3>駅一覧・追加</h3>
+    </p>
       <%= form_with(model: @station_new, url:admin_stations_path, local: true) do |form| %>
         <%= form.label :駅名 %>
         <%= form.text_field :station_name %>
@@ -13,6 +15,7 @@
       <% end %>
 
     <table class ='table table-striped'>
+      <p class ="content2" >
       <thead>
         <tr>
           <th>駅</th>
@@ -26,15 +29,16 @@
             <td><%= station.station_name %></td>
             <td>
               <% if station.station_status %>
-               有効
+               <h5>有効</h5>
               <% else %>
-               無効
+               <h5>無効</h5>
               <% end %>
             </td>
             <td><%= link_to "編集する", edit_admin_station_path(station.id), class: "btn btn-primary"%></td>
           </tr>
         <% end %>
       </tbody>
+    </p>
     </table>
     </div>
   </div>

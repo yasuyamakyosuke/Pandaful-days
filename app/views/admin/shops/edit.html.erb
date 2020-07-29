@@ -34,7 +34,7 @@
    	    </tr>
    	    <tr>
    	      <th><%= form.label :営業時間 %></th>
-   	      <td><%= form.text_field :shop_time %>~<%=form.text_field :finish_time %></td>
+   	      <td><%= form.text_field :shop_time, value: @shop.shop_time.strftime('%H:%M') %>~<%=form.text_field :finish_time %></td>
    	    </tr>
         <tr>
           <th><%= form.label :休日 %></th>

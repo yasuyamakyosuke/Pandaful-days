@@ -1,10 +1,16 @@
 <div class ="container">
   <div class ="row">
-    <h2><%= @user.name %>さんのUser情報編集</h2><br>
-      <tr>
-        <td><%= attachment_image_tag @user, :image, :fill, 150, 150 %></td>
-      </tr>
+      <p class ="content1" >
+    <h2><%= @user.name %>さんの会員情報編集</h2><br>
+      </p>
+  </div>
+  <div class ="row">
+    <div class ="col-md-3">
+      <%= attachment_image_tag @user, :image, :fill, 150, 150 %>
+    </div>
+    <div class ="col-md-9">
     <table class ='table'>
+
       <tr>
    	    <th>UserID</th>
    	    <td><%= @user.id %></td>
@@ -13,7 +19,7 @@
       <tr>
         <th><%= form.label :User画像 %></th>
         <td><%= form.attachment_field :image %></td>
-      <tr>
+      </tr>
       <tr>
         <th><%= form.label :名前 %></th>
         <td><%= form.text_field :name%></td>
@@ -25,6 +31,7 @@
       <tr>
         <th><%= form.label :自己紹介文 %></th>
         <td><%= form.text_area :profile %></td>
+      </tr>
       <tr>
         <th><%= form.label :Userステータス %></th>
         <td><%= form.radio_button :quit, :true %>
@@ -33,8 +40,9 @@
            <%= form.label :quit, "無効", {value: :false, style: "display: inline-block;"} %>
         </td>
       </tr>
-        <th><%= form.submit :変更を保存する  %></th>
+        <th><%= form.submit :変更を保存する,class: "btn btn-primary"  %></th>
       <% end %>
+      </div>
     </table>
   </div>
 </div>

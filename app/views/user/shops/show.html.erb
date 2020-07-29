@@ -47,25 +47,38 @@
       </table>
         <h2>コメント</h2>
         <% @shop.shop_comments.each do |shop_comment| %>
-          <%= shop_comment.user.name %>
-          <%= attachment_image_tag shop_comment.user,:image, :fill,40, 0 %>
-          <%= shop_comment.created_at.strftime('%Y/%m/%d') %>
-          <div id="star-rate-<%= shop_comment.id %>"></div>
-            <script>
-              $('#star-rate-<%= shop_comment.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= shop_comment.score %>,
-              });
-            </script>
-          <%= shop_comment.comment %><br>
-          <% if shop_comment.user == current_user %>
-            <%= link_to "削除", shop_shop_comment_path(shop_comment.shop, shop_comment), method: :delete %>
-          <% end %>
+            <div class="comment-body bb">
+              <div class="comment-avatar">
+                <div class="avatar">
+                  <%= attachment_image_tag shop_comment.user,:image, :fill,40, 0,fallback: "download.png",size:'40x40' %>
+                </div>
+              </div>
+              <div class="comment-text">
+                <div class="comment-author clearfix">
+                  <a href="#" class="link-author"><%= shop_comment.user.name %></a>
+                  <span class="comment-meta">
+                    <span class="comment-date"><%= shop_comment.created_at.strftime('%Y/%m/%d') %>
+                  </span>
+                </span>
+                <div id="star-rate-<%= shop_comment.id %>"></div>
+                  <script>
+                  $('#star-rate-<%= shop_comment.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= shop_comment.score %>,
+                  });
+                  </script>
+                <div class="comment-entry"><%= shop_comment.comment %></div>
+                <% if shop_comment.user == current_user %>
+                  <%= link_to "削除", shop_shop_comment_path(shop_comment.shop, shop_comment), method: :delete %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
       <% if user_signed_in? %>
    　　　<%= form_for [@shop, @shop_comment] do |f| %>

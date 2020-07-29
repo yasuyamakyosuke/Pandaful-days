@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
 
 /**
  * 01/28/2016
@@ -123,3 +124,5 @@ body {
 .sign input[type="submit"]:focus {
   border-color: #05a;
 }
+
+
