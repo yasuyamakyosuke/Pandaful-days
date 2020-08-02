@@ -26,6 +26,10 @@
    <% if user = current_user %>
      <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
    <% end %>
+  <% @user.favorites.each do |favorite| %>
+   <%= favorite.shop.shop_name %>
+  <% end %>
+  
     </div>
   </div>
 </div>

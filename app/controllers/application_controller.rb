@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 		when User
              root_path
 	    when Admin
-	    	 root_path
+	    	 admin_home_top_path
        end
 	end
     def configure_permitted_parameters

@@ -6,8 +6,8 @@
     <div class="search_container">
     <%= form_with(url:shops_path,method:'get',local:true) do |form| %>
       <%= form.text_field :name,:placeholder => "店名を入力", value:params[:shop_name] %>
-      <%= form.collection_select(:genre_id,Genre.all, :id, :genre_name,include_blank: "選択してください") %>
-      <%= form.collection_select(:station_id,Station.all, :id, :station_name,include_blank: true) %>
+      <%= form.collection_select(:genre_id,Genre.all, :id, :genre_name,include_blank: "ジャンル") %>
+      <%= form.collection_select(:station_id,Station.all, :id, :station_name,include_blank: "駅") %>
       <%= submit_tag "店を検索する", :name => nil %>
     <% end %>
     </div>

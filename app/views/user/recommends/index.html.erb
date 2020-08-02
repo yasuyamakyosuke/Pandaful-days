@@ -4,7 +4,8 @@
       <tr>
    	    <th>ID</th>
         <th>User名</th>
-   	    <th>店名</th>
+        <th>店名</th>
+   	    <th></th>
      </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
           <td><%= recommend.id %></td>
           <td><%= recommend.user.name %></td>
         　<td><%= link_to recommend.recommend_shop_name, recommend_path(recommend.id) %></td>
+        　<td><%= link_to "この店舗を登録する", new_admin_shop_path(recommend_id: recommend.id) %></td>
         </tr>
       <% end %>
     </tbody>

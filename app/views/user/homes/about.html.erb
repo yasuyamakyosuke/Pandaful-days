@@ -1,9 +1,18 @@
+<div class="about-container">
+  	<div class="message">
+  	 <h2>さぁ今日はどんなパンを</h2><br>
+  	 <h2>味わいましょうか？</h2>
+  </div>
+  </div>
+</div>
 
+   しかし私達の知らない素敵なパンはきっとたくさんあります<br>
   <% if user_signed_in? %>
     <%= link_to "あなたのお勧めのパン屋を教えてください！",new_recommend_path %>
   <% else %>
     <%= link_to "会員登録してあなたのお勧めのパン屋を教えてください！",new_user_registration_path %>
   <% end %>
+
 
 
 

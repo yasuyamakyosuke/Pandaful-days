@@ -10,4 +10,8 @@ class Shop < ApplicationRecord
 	geocoded_by :shop_address
 	after_validation :geocode, if: :shop_address_changed?
 
+    def favorited_by?(user)
+      favorites.where(user_id: user.id).exists?
+    end
+
 end

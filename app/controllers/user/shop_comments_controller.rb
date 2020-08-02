@@ -16,7 +16,10 @@ class User::ShopCommentsController < ApplicationController
 	end
 
 	def destroy
+        shop = Shop.find(params[:shop_id])
 		ShopComment.find_by(id: params[:id], shop_id: params[:shop_id]).destroy
+        shop.average_score = ShopComment.shop_score_average(shop.id)
+        shop.save
 		redirect_to shop_path(params[:shop_id])
 	end
 

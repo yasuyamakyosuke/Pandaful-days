@@ -4,28 +4,14 @@
       <h2>検索結果一覧</h2>
     </div>
     <div class ="row">
-      <div class="col-md-8 d-flex align-items-cente">
+      <div class="col-md-8 d-flex align-items-center">
       <%= form_with(url:shops_path,local:true, method: :get) do |form| %>
         <%= form.hidden_field :name,value:params[:name] %>
         <%= form.hidden_field :genre_id,value:params[:genre_id] %>
         <%= form.hidden_field :station_id,value:params[:station_id] %>
-        <%= form.select :sort_type,[["コメント数","shop_comment_count"],["店名","shop_name"],["評価","average_score"]],include_blank: true %>
+        <%= form.select :sort_type,[["コメント数","shop_comment_count"],["店名","shop_name"],["評価","average_score"],["いいね","favorites_count"]],include_blank: true %>
         <%= form.submit :並び替える %>
       <% end %>
-    </div>
-    </div>
-    <div class="row">
-          <div class="col-md-1">
-      3つの列の1列目<br>
-      .col
-    </div>
-    <div class="col-md-8">
-      3つの列の2列目<br>
-      .col
-    </div>
-    <div class="col-md-3">
-      3つの列の3列目<br>
-      .col
     </div>
       <div class="col-md-8 offset-md-2 ">
             <% @shops.each do |shop| %>
@@ -39,10 +25,11 @@
                   <%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %><br>
                   <%= image_tag 'star-on.png' %><%= shop.average_score %><br>
                   <i class="fa fa-commenting-o"></i><%= "#{shop.shop_comments.count}コメント" %>
+                  <%= shop.favorites.count %>
       </div>
               </div>
           <% end %>
-          <%= paginate @shops %>
+           <%= paginate @shops %>
 
       </div>
     </div>

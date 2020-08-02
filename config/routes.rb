@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     get 'shop/search' => 'shops#search'
     resources :shops, only:[:index, :show] do
+      resource :favorites,only: [:create,:destroy]
       resources :shop_comments, only:[:create, :destroy]
     end
     get 'confirm' => 'users#confirm'
@@ -26,12 +27,14 @@ Rails.application.routes.draw do
     root :to => 'homes#top'
     get 'home/about' => 'homes#about'
 
+
+
   end
   namespace :admin do
     resources :genres,only: [:index,:create,:edit,:update]
     resources :stations, only: [:index,:create,:edit,:update]
     resources :shops,only: [:index,:new,:create,:show,:edit,:update]
     resources :users,only: [:index,:show,:edit,:update]
-    get 'top' => 'admin#top'
+    get 'home/top' => 'homes#top'
   end
 end
