@@ -8,6 +8,5 @@ class User < ApplicationRecord
   has_many :recommend
   has_many :favorites, dependent: :destroy
   # has_many :fovorite_shops, through: :favorites, class_name: "Shop"
-  is_impressionable counter_cache: true
   acts_as_paranoid
 end
