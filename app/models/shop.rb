@@ -11,7 +11,9 @@ class Shop < ApplicationRecord
 	after_validation :geocode, if: :shop_address_changed?
 
     def favorited_by?(user)
-      favorites.where(user_id: user.id).exists?
+       if !user.nil?
+           favorites.where(user_id: user.id).exists?
+       end
     end
 
 end

@@ -70,7 +70,7 @@ gem 'kaminari', '~> 1.2.1'
 gem 'devise'
 gem 'pry-byebug'
 gem 'geocoder'
-gem 'impressionist'
+gem 'impressionist', '~>1.6.1'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
