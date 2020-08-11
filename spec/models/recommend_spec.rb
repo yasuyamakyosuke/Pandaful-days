@@ -17,7 +17,7 @@ RSpec.describe 'Recommendモデルのテスト', type: :model do
         expect(recommend.valid?).to eq false;
       end
       it '200文字以下であること' do
-        shop.shop_profile = Faker::Lorem.characters(number:201)
+        recommend.recommend_shop_profile = Faker::Lorem.characters(number:201)
         expect(recommend.valid?).to eq false;
       end
     end

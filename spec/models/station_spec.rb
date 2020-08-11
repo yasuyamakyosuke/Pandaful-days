@@ -7,7 +7,7 @@ RSpec.describe 'Stationモデルのテスト', type: :model do
     context 'station_nameカラム' do
       it '空欄でないこと' do
         station.station_name = ''
-        expect(shop.valid?).to eq false;
+        expect(station.valid?).to eq false;
       end
     end
   end

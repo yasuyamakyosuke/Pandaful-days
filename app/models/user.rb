@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :image
   has_many :shop_comments
-  has_many :recommend
+  has_many :recommends
   has_many :favorites, dependent: :destroy
   validates :name, length: {maximum: 20, minimum: 2}
   validates :profile, length: {maximum:100}
