@@ -20,7 +20,7 @@
 
       <div class="col-md-3 ">
 
-                  <%= attachment_image_tag shop, :main, :fill, 200, 200 %></div>
+                  <%= attachment_image_tag shop, :main, :fill, 200, 200, format: "jpg" %></div>
        <div class="col-md-9 ">
                   <%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %><br>
                   <%= image_tag 'star-on.png' %><%= shop.average_score %><br>

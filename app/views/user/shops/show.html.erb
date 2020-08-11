@@ -21,43 +21,45 @@
            <% end %>
         </li>
         <% end %>
+      <div class="table-responsive">
       <table class ='table'>
    	    <tr>
-   	      <th>店名</th>
+   	      <th scope="col" class="text-nowrap">店名</th>
    	      <td><%= @shop.shop_name %></td>
    	    </tr>
    	    <tr>
-   	      <th>店紹介文</th>
+   	      <th scope="col" class="text-nowrap">店紹介文</th>
    	      <td><%= @shop.shop_profile %></td>
    	    </tr>
    	    <tr>
-   	      <th>ジャンル</th>
+   	      <th scope="col" class="text-nowrap">ジャンル</th>
    	      <td><%= @shop.genre.genre_name %></td>
    	    </tr>
    	    <tr>
-   	      <th>駅</th>
+   	      <th scope="col" class="text-nowrap">駅</th>
    	      <td><%= @shop.station.station_name %></td>
    	    </tr>
    	    <tr>
-   	      <th>住所</th>
+   	      <th scope="col" class="text-nowrap">住所</th>
    	      <td><%= @shop.shop_address %>
             <div id="map">
 　          </div>
           </td>
         </tr>
    	    <tr>
-   	      <th>営業時間</th>
+   	      <th scope="col" class="text-nowrap">営業時間</th>
    	      <td><%= @shop.shop_time.strftime('%H:%M') %></td>
    	    </tr>
         <tr>
-          <th>休日</th>
-          <td><%= @shop.holiday %>
-        </td>
+          <th scope="col" class="text-nowrap">休日</th>
+          <td><%= @shop.holiday %></td>
+        </tr>
    	    <tr>
-   	      <th>ホームページ</th>
+   	      <th scope="col" class="text-nowrap">ホームページ</th>
    	      <td><%= @shop.shop_homepage %></td>
    	    </tr>
       </table>
+    </div>
         <h2>コメント</h2>
         <% @shop.shop_comments.each do |shop_comment| %>
             <div class="comment-body bb">
@@ -68,7 +70,7 @@
               </div>
               <div class="comment-text">
                 <div class="comment-author clearfix">
-                  <a href="#" class="link-author"><%= shop_comment.user.name %></a>
+                  <%= link_to shop_comment.user.name,user_path(shop_comment.user.id) %>
                   <span class="comment-meta">
                     <span class="comment-date"><%= shop_comment.created_at.strftime('%Y/%m/%d') %>
                   </span>

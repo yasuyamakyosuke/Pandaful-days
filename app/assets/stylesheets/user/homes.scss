@@ -85,10 +85,19 @@ body {
 }
 .about-container::before{
   /* 透過した黒を重ねる */
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0,0,0,0.8);
+  position: absolute;
+  top: 82px;
+  right: 0;
+  bottom: 360px;
+  left: 0;
+  content: ' ';
 }
 .message {
   color: #FFFFFF;
   display: flex;
   justify-content: center;
+  position: absolute;
+  right: 350px;
+  top: 200px;
 }

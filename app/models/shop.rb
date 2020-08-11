@@ -6,6 +6,9 @@ class Shop < ApplicationRecord
 	has_many :shop_comments
 	has_many :shop_images, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	validates :shop_name, presence: true
+	validates :shop_profile, presence: true,length: {maximum:200}
+	validates :shop_address, presence: true
 	accepts_attachments_for :shop_images, attachment: :image
 	geocoded_by :shop_address
 	after_validation :geocode, if: :shop_address_changed?

@@ -8,32 +8,7 @@
 	margin-top: 10px;
 }
 
-.search_container input[type="text"]{
-  border: 1px solid #999;
-  padding: 3px 10px;
-  border-radius: 3px;
-  height: 2.2em;
-  overflow: hidden;
-}
-.search_container input[type="text"]:focus {
-  outline: 0;
-  height: 2.0em;
-}
-.search_container input[type="submit"]{
-  cursor: pointer;
-  font-family: FontAwesome;
-  font-size: 1.2em;
-  border: none;
-  background: #3879D9;
-  border: 1px solid #3879D9;
-  border-radius: 3px;
-  color: #fff;
-  outline : none;
-  width: 3.5em;
-  height: 1.9em;
-  display: inline-block;
-  vertical-align: middle;
-}
+
 section.slice {
     padding: 46px 100px;
     position: relative;

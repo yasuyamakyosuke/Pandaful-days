@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :shop_comments
   has_many :recommend
   has_many :favorites, dependent: :destroy
-  # has_many :fovorite_shops, through: :favorites, class_name: "Shop"
+  validates :name, length: {maximum: 20, minimum: 2}
+  validates :profile, length: {maximum:100}
   acts_as_paranoid
 end

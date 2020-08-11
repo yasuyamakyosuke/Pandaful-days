@@ -3,7 +3,7 @@
     <h2><%= @user.name %>さんの会員情報詳細</h2><br>
   </div>
   <div class ="row">
-    <div class ="col-md-3 d-flex align-items-center" style="height: 100vh">
+    <div class ="col-md-3 d-flex align-items-center" style="height: 300px">
       <%= attachment_image_tag @user, :image, :fill, 150, 150, fallback: "download.png" %>
     </div>
     <div class ="col-md-9 d-flex align-items-center">
@@ -22,14 +22,23 @@
         <th>自己紹介文</th>
         <td><%= @user.profile %></td>
       </tr>
-    </table>
-   <% if user = current_user %>
+         <% if user = current_user %>
      <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
    <% end %>
-  <% @user.favorites.each do |favorite| %>
-   <%= favorite.shop.shop_name %>
-  <% end %>
-  
-    </div>
+    </table>
+
+ </div>
+  <div class ="row">
+    <div class ="col-md-12　d-flex align-items-center">
+    <table class ='table'>
+      お気に入り店舗
+      <% @user.favorites.each do |favorite| %>
+       <tr>
+         <th><%= link_to favorite.shop.shop_name, shop_path(favorite.shop.id) %></th>
+       </tr>
+       <% end %>
+    </table>
+  </div>
+
   </div>
 </div>
