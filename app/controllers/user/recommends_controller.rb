@@ -26,10 +26,10 @@ class User::RecommendsController < ApplicationController
 	end
 
 	def destroy
-       @recommend = Recommend.find(params[:id])
-       @recommend.destroy
-       redirect_to recommends_path
-   end
+        @recommend = Recommend.find(params[:id])
+        @recommend.destroy
+        redirect_to recommends_path
+    end
 
 	def thank
 	end
@@ -38,5 +38,4 @@ class User::RecommendsController < ApplicationController
 	def recommend_params
 	    params.require(:recommend).permit(:recommend_shop_name,:recommend_shop_profile,:recommend_shop_address,:recommend_shop_homepage,:recommend_image,:genre_id,:station_id)
 	end
-
 end

@@ -8,10 +8,9 @@ class User::ShopCommentsController < ApplicationController
             user_id: current_user.id
         )
         if shop.save!
-            #ShopComent.averrage #shop_id を指定するように変更する
-            shop.average_score = ShopComment.shop_score_average(shop.id)
-            shop.save
-            redirect_to shop_path(shop)
+           shop.average_score = ShopComment.shop_score_average(shop.id)
+           shop.save
+           redirect_to shop_path(shop)
         end
 	end
 
@@ -27,9 +26,6 @@ class User::ShopCommentsController < ApplicationController
 	def shop_comment_params
 		params.require(:shop_comment).permit(:comment,:score)
 	end
-
-
-
 end
 
 

@@ -38,6 +38,26 @@
 /* 'Open Sans' font from Google Fonts */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  list-style: none;
+}
+
+.list-items {
+  display: inline;
+  margin: 0 5px;
+}
+
+.items {
+  float: left;
+}
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -124,5 +144,7 @@ body {
 .sign input[type="submit"]:focus {
   border-color: #05a;
 }
-
+.text_font {
+    font-family: 'Comic Sans MS';
+}
 

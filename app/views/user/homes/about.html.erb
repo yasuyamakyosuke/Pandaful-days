@@ -1,16 +1,47 @@
 <div class="about-container">
-  	<div class="message">
-  	 <h2>さぁ今日はどんなパンを</h2><br>
-  	 <h2>味わいましょうか？</h2>
+　<div class="row">
+    <div class="message">
+  	    <h2>さぁ今日はどんなパンを</h2><br>
+  	　　 <h2>味わいましょうか？</h2>
+    </div>
   </div>
 </div>
 
-   しかし私達の知らない素敵なパンはきっとたくさんあります<br>
-  <% if user_signed_in? %>
-    <%= link_to "あなたのお勧めのパン屋を教えてください！",new_recommend_path %>
-  <% else %>
-    <%= link_to "会員登録してあなたのお勧めのパン屋を教えてください！",new_user_registration_path %>
-  <% end %>
+<div class="container">
+　<div class="row">
+   <div class="col-md-4">
+     <h2>詳細な検索機能</h2>
+     <div>駅、ジャンル、店名と自分好みの</div>
+     <div>条件で検索可能！</div>
+   </div>
+   <div class="col-md-4">
+     <h2>Myshop機能</h2>
+     <div>自分で行きたいお店、お気に入りの</div>
+     <div>お店をMyshopに登録可能</div>
+     <div>また他のUserの店舗も確認できるので</div>
+     <div>行きたいお店を増やそう</div>
+  </div>
+  <div class="col-md-4">
+    <h2>何を描くか検討中</h2>
+    <div>何がいいんでしょうか？</div>
+    <div>アプリについて</div>
+    <div>どうしましょ</div>
+  </div>
+  <div class="col-md-12 text-center">
+    <div class="my-5">
+    <div>しかし私達の知らない素敵なパンはきっとたくさんあります</div>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "あなたのお勧めのパン屋を教えてください！",new_recommend_path %>
+      <% else %>
+        <%= link_to "会員登録してあなたのお勧めのパン屋を教えてください！",new_user_registration_path %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
 
 
 

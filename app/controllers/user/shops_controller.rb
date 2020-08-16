@@ -1,6 +1,7 @@
 class User::ShopsController < ApplicationController
 
 	def search
+		@stations = Station.all
 	end
 
 	def index
@@ -11,7 +12,8 @@ class User::ShopsController < ApplicationController
 		if params[:sort_type] == 'shop_comment_count'
             @shops = @shops.select('shops.*', 'count(shop_comments.shop_id) AS shop_comment_count')
                     .left_joins(:shop_comments)
-                    .group('shop_comments.shop_id')
+                    .group('shops.id')
+                    #.group('shop_comments.shop_id')
                     .order('count(shop_comments.shop_id) desc')
 		elsif params[:sort_type] == 'favorites_count'
               @shops = @shops.select('shops.*', 'count(favorites.shop_id) AS favorites_count')
@@ -24,14 +26,10 @@ class User::ShopsController < ApplicationController
               @shops = @shops.order('average_score desc')
         end
         @shops= @shops.page(params[:page])
-
-
-
 	end
 
 	def show
 		@shop = Shop.find(params[:id])
 		@shop_comment = ShopComment.new
 	end
-
 end

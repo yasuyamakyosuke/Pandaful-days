@@ -1,11 +1,11 @@
-<div class ="container">
+<div class ="container my-md-4">
   <div class ="row">
-    <div class ="col-xs-3">
-    店舗編集
-    <%= form_with(model:@recommend, url:recommend_path) do |form| %>
-      <%= attachment_image_tag @recommend, :recommend_image, :fill, 150, 150 %>
+    <div class ="col-md-3">
+      <%= @recommend.recommend_shop_name %>の店舗編集
+      <%= form_with(model:@recommend, url:recommend_path) do |form| %>
+        <div class="my-md-4"><%= attachment_image_tag @recommend, :recommend_image, size: "200x200", format: "jpeg"  %></div>
     </div>
-    <div class ="col-xs-9">
+    <div class ="col-md-9">
       <table class ='table'>
    	    <tr>
    	      <th><%= form.label :店名 %></th>
@@ -32,8 +32,10 @@
    	      <td><%= form.text_field :recommend_shop_homepage %></td>
    	    </tr>
 	      <tr>
-	        <th><%= form.submit %></th>
+	        <th><%= form.submit :編集する%></th>
 	      </tr>
-
-
-   <% end %>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

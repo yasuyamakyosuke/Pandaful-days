@@ -22,16 +22,16 @@
         <th>自己紹介文</th>
         <td><%= @user.profile %></td>
       </tr>
-         <% if user = current_user %>
-     <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
-   <% end %>
+         <% if @user.id == current_user.id %>
+           <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
+         <% end %>
     </table>
 
  </div>
   <div class ="row">
     <div class ="col-md-12　d-flex align-items-center">
     <table class ='table'>
-      お気に入り店舗
+      <div>お気に入り店舗</div>
       <% @user.favorites.each do |favorite| %>
        <tr>
          <th><%= link_to favorite.shop.shop_name, shop_path(favorite.shop.id) %></th>

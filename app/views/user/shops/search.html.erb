@@ -1,8 +1,9 @@
 <div class ="container">
-  <div class ="search" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px; height: auto;">
+
+  <div class ="search bg-dark " style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px; height: auto;">
     <div class ="row justify-content-center">
   　<div class ="my-sm-0">　
-    <h2>条件で検索する</h2>
+    <h2><div class =text-light>条件で検索する</div></h2>
   </div>
   </div>
   <div class ="row justify-content-center">
@@ -23,23 +24,23 @@
   </div>
   <div class="row align-items-center justify-content-center">
     <div class="col-3 align-self-center">
-        <%= image_tag 'melon.jpg',size: "100x100" %><br>
+        <%= image_tag 'food_melonpan.png',size: "100x100" %><br>
       	<%= link_to "メロンパン",shops_path(genre_id: 1) %>
     </div>
     <div class="col-3">
-      	<%= image_tag 'furance.jpg',size: "100x100" %><br>
+      	<%= image_tag 'food_francepan.png',size: "100x100" %><br>
       	<%= link_to "フランスパン",shops_path(genre_id: 2) %>
     </div>
        <div class="col-3">
-        <%= image_tag 'carry.jpg',size: "100x100" %><br>
+        <%= image_tag 'food_currypan.png',size: "100x100" %><br>
         <%= link_to "カレーパン",shops_path(genre_id: 3) %>
     </div>
        <div class="col-3">
-        <%= image_tag 'furance.jpg',size: "100x100" %><br>
-        <%= link_to "フランスパン",shops_path(genre_id: 4) %>
+        <%= image_tag 'food_bread.png',size: "100x100" %><br>
+        <%= link_to "食パン",shops_path(genre_id: 4) %>
     </div>
        <div class="col-3">
-        <%= image_tag 'bergul.jpg',size: "100x100" %><br>
+        <%= image_tag 'food_bagel.png',size: "100x100" %><br>
         <%= link_to "ベーグル",shops_path(genre_id: 5) %>
     </div>
        <div class="col-3">
@@ -47,12 +48,12 @@
         <%= link_to "サンドイッチ",shops_path(genre_id: 6) %>
     </div>
        <div class="col-3">
-        <%= image_tag 'furance.jpg',size: "100x100" %><br>
-        <%= link_to "フランスパン",shops_path(genre_id: 7) %>
+        <%= image_tag 'food_croissan.png',size: "100x100" %><br>
+        <%= link_to "クロワッサン",shops_path(genre_id: 7) %>
     </div>
        <div class="col-3">
-        <%= image_tag 'furance.jpg',size: "100x100" %><br>
-        <%= link_to "フランスパン",shops_path(genre_id: 8) %>
+        <%= image_tag 'food_hamburger.png',size: "100x100" %><br>
+        <%= link_to "ハンバーガー",shops_path(genre_id: 8) %>
     </div>
   </div>
  </div>
@@ -61,93 +62,11 @@
     <div class ="row justify-content-center">
       <div class ="my-sm-0">
       <h2>駅から検索</h2>
+    </div>
         <div class="row align-items-center justify-content-center">
-        <div class="col-12 align-self-center">
-           <%= link_to "新宿",shops_path(station_id:1) %>
-        </div>
-        <div class="col-1">
-           <% link_to "新大久保",shops_path(station_id: 2) %>
-        </div>
-        <div class="col-1">
-           <% link_to "高田馬場",shops_path(station_id: 3) %>
-        </div>
-        <div class="col-1">
-           <% link_to "目白",shops_path(station_id: 4) %>
-        </div>
-        <div class="col-1">
-           <% link_to "池袋",shops_path(station_id: 5) %>
-        </div>
-        <div class="col-1">
-           <% link_to "大塚",shops_path(station_id: 6) %>
-        </div>
-        <div class="col-1">
-           <% link_to "巣鴨",shops_path(station_id: 7) %>
-        </div>
-        <div class="col-1">
-           <% link_to "駒込",shops_path(station_id: 8) %>
-        </div>
-        <div class="col-1">
-           <% link_to "田端",shops_path(station_id: 9) %>
-        </div>
-        <div class="col-1">
-           <% link_to "西日暮里",shops_path(station_id: 10) %>
-        </div>
-        <div class="col-1">
-           <% link_to "日暮里",shops_path(station_id: 11) %>
-        </div>
-        <div class="col-1">
-           <% link_to "鶯谷",shops_path(station_id: 12) %>
-        </div>
-        <div class="col-1">
-           <% link_to "上野",shops_path(station_id: 13) %>
-        </div>
-        <div class="col-1">
-           <% link_to "御徒町",shops_path(station_id: 14) %>
-        </div>
-        <div class="col-1">
-           <% link_to "秋葉原",shops_path(station_id: 15) %>
-        </div>
-        <div class="col-1">
-           <% link_to "神田",shops_path(station_id: 16) %>
-        </div>
-        <div class="col-1">
-           <% link_to "東京",shops_path(station_id: 17) %>
-        </div>
-        <div class="col-1">
-           <% link_to "有楽町",shops_path(station_id: 18) %>
-        </div>
-        <div class="col-1">
-           <% link_to "新橋",shops_path(station_id: 19) %>
-        </div>
-        <div class="col-1">
-           <% link_to "浜松町",shops_path(station_id: 20) %>
-        </div>
-        <div class="col-1">
-           <% link_to "田町",shops_path(station_id: 21) %>
-        </div>
-        <div class="col-1">
-           <% link_to "品川",shops_path(station_id: 22) %>
-        </div>
-        <div class="col-1">
-           <% link_to "大崎",shops_path(station_id: 23) %>
-        </div>
-        <div class="col-1">
-           <% link_to "五反田",shops_path(station_id: 24) %>
-        </div>
-        <div class="col-1">
-           <% link_to "目黒",shops_path(station_id: 25) %>
-        </div>
-        <div class="col-1">
-           <% link_to "恵比寿",shops_path(station_id: 26) %>
-        </div>
-        <div class="col-1">
-           <% link_to "渋谷",shops_path(station_id: 27) %>
-        </div>
-        <div class="col-1">
-           <% link_to "原宿",shops_path(station_id: 28) %>
-        </div>
-        <div class="col-1">
-           <% link_to "代々木",shops_path(station_id: 29) %>
-        </div>
+        <div class="col-4 align-self-center">
+          <% @stations.each do |station| %>
+            <%= link_to station.station_name, shops_path(station_id: station.id) %>
+          <% end %>
       </div>
 </div>

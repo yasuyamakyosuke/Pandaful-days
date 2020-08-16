@@ -1,5 +1,4 @@
 class Shop < ApplicationRecord
-
 	attachment :main
 	belongs_to :genre
 	belongs_to :station
@@ -18,5 +17,4 @@ class Shop < ApplicationRecord
            favorites.where(user_id: user.id).exists?
        end
     end
-
 end

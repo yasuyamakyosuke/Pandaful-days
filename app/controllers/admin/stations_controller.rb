@@ -18,12 +18,12 @@ class Admin::StationsController < ApplicationController
 	def update
 		@station = Station.find(params[:id])
 		if @station.update(station_params)
-			redirect_to admin_stations_path
+		   redirect_to admin_stations_path
 		end
 	end
 
-   private
+    private
     def station_params
-  	  params.require(:station).permit(:station_name,:station_status)
+  	    params.require(:station).permit(:station_name,:station_status)
   	end
 end

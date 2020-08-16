@@ -5,8 +5,8 @@ class Admin::ShopsController < ApplicationController
 	end
 
 	def new
-		@shop_new = Shop.new
-		if params[:recommend_id]
+	    @shop_new = Shop.new
+		if  params[:recommend_id]
 			recommend = Recommend.find(params[:recommend_id])
 			@shop_new.shop_name = recommend.recommend_shop_name
 			@shop_new.shop_address = recommend.recommend_shop_address
@@ -18,7 +18,7 @@ class Admin::ShopsController < ApplicationController
 	end
 
 	def create
-		@shop_new = Shop.new(shop_params)
+	    @shop_new = Shop.new(shop_params)
 		@shop_new.genre_id = params[:shop][:genre_id]
 		@shop_new.station_id = params[:shop][:station_id]
 		@shop_new.save

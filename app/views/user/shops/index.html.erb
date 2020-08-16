@@ -1,10 +1,11 @@
 <section class="sct-color-1 slice">
   <div class="container-fluid masonry-container">
-    <div class ="row">
-      <h2>検索結果一覧</h2>
+    <div class ="row justify-content-center">
+      <div class ="my-sm-0">
+        <h2>検索結果一覧</h2>
+      </div>
     </div>
-    <div class ="row">
-      <div class="col-md-8 d-flex align-items-center">
+    <div class ="row justify-content-center">
       <%= form_with(url:shops_path,local:true, method: :get) do |form| %>
         <%= form.hidden_field :name,value:params[:name] %>
         <%= form.hidden_field :genre_id,value:params[:genre_id] %>
@@ -14,25 +15,26 @@
       <% end %>
     </div>
       <div class="col-md-8 offset-md-2 ">
-            <% @shops.each do |shop| %>
+        <% @shops.each do |shop| %>
+        <div class ="search" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px; height: auto;">
     <div class="row py-5">
-
-
       <div class="col-md-3 ">
-
-                  <%= attachment_image_tag shop, :main, size: "200x200", format: "jpeg" %></div>
+        <%= attachment_image_tag shop, :main, size: "200x200", format: "jpeg" %>
+      </div>
        <div class="col-md-9 ">
-                  <%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %><br>
-                  <%= image_tag 'star-on.png' %><%= shop.average_score %><br>
-                  <i class="fa fa-commenting-o"></i><%= "#{shop.shop_comments.count}コメント" %>
-                  <div class="fa fa-heart" aria-hidden="true" style="color: red;">
-                    <%= shop.favorites.count %>
-                  </div>
+         <%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %><br>
+         <%= image_tag 'star-on.png' %><%= shop.average_score %><br>
+         <i class="fa fa-commenting-o"></i><%= "#{shop.shop_comments.count}コメント" %><br>
+          My shop<div class="fa fa-heart" aria-hidden="true" style="color: red;">
+            <%= shop.favorites.count %>
+          </div>
       </div>
               </div>
+            </div>
           <% end %>
            <%= paginate @shops %>
       </div>
+    </div>
     </div>
     </div>
 </section>

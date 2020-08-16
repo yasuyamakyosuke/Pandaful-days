@@ -1,13 +1,14 @@
 <div class ="container">
-    <div class ="row">
-      <h3>下記の情報を記載し私達にお勧めのパン屋を教えてください！</h3><br>
-      <h3>確認後掲載させて頂きます</h3>
+  <div class ="row">
+    <div class="my-5">
+      <h3>下記の情報を入力し私達にお勧めのパン屋を教えてください！</h3>
     </div>
-    <div class ="row">
-      <table class ="table">
-        <%= form_with(model:@recommend_new, url:recommends_path) do |form| %>
-          <tr>
-            <th><%= form.label :画像 %></th>
+  </div>
+  <div class ="row col-md-12">
+    <table class ="table">
+      <%= form_with(model:@recommend_new, url:recommends_path) do |form| %>
+        <tr>
+          <th><%= form.label :画像 %></th>
             <td><%= form.attachment_field :recommend_image %></td>
           </tr>
           <tr>
@@ -16,15 +17,15 @@
           </tr>
           <tr>
             <th><%= form.label :オススメポイント %></th>
-            <td><%= form.text_area :recommend_shop_profile %></td>
+            <td><%= form.text_area :recommend_shop_profile,rows:'5' %></td>
           </tr>
           <tr>
             <th><%= form.label :ジャンル %></th>
-            <td><%= form.collection_select(:genre_id,Genre.all, :id, :genre_name) %></td>
+            <td><%= form.collection_select(:genre_id,Genre.all, :id, :genre_name,include_blank: "ジャンル") %></td>
           </tr>
           <tr>
             <th><%= form.label :駅 %></th>
-            <td><%= form.collection_select(:station_id,Station.all, :id, :station_name) %></td>
+            <td><%= form.collection_select(:station_id,Station.all, :id, :station_name,include_blank: "駅") %></td>
           </tr>
           <tr>
             <th><%= form.label :店舗住所 %></th>
@@ -39,7 +40,7 @@
           </tr>
         <% end %>
       </table>
-      </div>
+    </div>
     </div>
   </div>
 </div>
