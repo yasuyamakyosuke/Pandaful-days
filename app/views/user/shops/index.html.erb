@@ -23,7 +23,12 @@
       </div>
        <div class="col-md-9 ">
          <%= link_to shop.shop_name, shop_path(shop.id),data: { "turbolinks"=> false } %><br>
-         <%= image_tag 'star-on.png' %><%= shop.average_score %><br>
+         <%= image_tag 'star-on.png' %>
+         <% if shop.average_score %>
+           <%= shop.average_score.round(1) %>
+         <% else %>
+           まだ評価はありません
+         <% end %><br>
          <i class="fa fa-commenting-o"></i><%= "#{shop.shop_comments.count}コメント" %><br>
           My shop<div class="fa fa-heart" aria-hidden="true" style="color: red;">
             <%= shop.favorites.count %>
