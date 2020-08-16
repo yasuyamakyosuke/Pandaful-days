@@ -2,7 +2,12 @@
   <div class="container-fluid masonry-container">
     <div class ="row justify-content-center">
       <div class ="my-sm-0">
-        <h2>検索結果一覧</h2>
+       <% if @shops.empty? %>
+           <h2>検索条件のパン屋がありませんでした</h2><br>
+           <%= image_tag 'shazaipanda.jpeg',size: "400x500" %><br>
+           <h3>申し訳ございません条件を変更し再度検索してください</h3><br>
+           →<%= link_to "検索条件を変更して再検索する",shop_search_path %>
+       <% else %><h2>検索結果一覧</h2>
       </div>
     </div>
     <div class ="row justify-content-center">
@@ -14,6 +19,7 @@
         <%= form.submit :並び替える %>
       <% end %>
     </div>
+       <% end %>
       <div class="col-md-8 offset-md-2 ">
         <% @shops.each do |shop| %>
         <div class ="search" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px; height: auto;">

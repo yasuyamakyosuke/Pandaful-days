@@ -1,16 +1,16 @@
 <div class ="container">
-  <div class ="row">
-  <p class ="content1" >
-    <h2><%= @user.name %>さんの会員情報詳細</h2>
-  </p>
+  <div class ="row m-3">
+    <p class ="content1" >
+      <h2><%= @user.name %>さんの会員情報詳細</h2>
+    </p>
   </div>
-   <div class ="row">
+  <div class ="row m-3">
     <div class ="col-md-3">
-
-      <%= attachment_image_tag @user, :image, :fill, 150, 150 %>
+      <%= attachment_image_tag @user, :image,size: "250x250", fallback: "download.png" %>
     </div>
+
     <div class ="col-md-9">
-        <table class ='table'>
+      <table class ='table'>
    	    <tr>
    	      <th>UserID</th>
    	      <td><%= @user.id %></td>
@@ -29,7 +29,13 @@
         </tr>
        	<tr>
    	      <th>ステータス</th>
-   	      <td><%= @user.quit %></td>
+   	      <td>
+            <% if @user.quit %>
+              有効
+            <% else %>
+              退会済み
+            <% end %>
+          </td>
    	    </tr>
       </table>
       <%= link_to "編集する", edit_admin_user_path(@user.id),class: "btn btn-primary",data: { "turbolinks"=> false } %>

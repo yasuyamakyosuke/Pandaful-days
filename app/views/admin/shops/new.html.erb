@@ -1,10 +1,10 @@
 <div class ="container">
-  <div class ="row">
+  <div class ="row m-3">
       <h3>パン屋新規登録</h3>
   </div>
-   <div class ="row">
-      <table class ='table'>
-  	    <%= form_with(model: @shop_new, url:admin_shops_path) do |form| %>
+  <div class ="row m-3">
+    <table class ='table'>
+  	  <%= form_with(model: @shop_new, url:admin_shops_path) do |form| %>
   	    <tr>
           <th><%= form.label :メイン画像 %></th>
   	      <td><%= form.attachment_field :main %></td>
@@ -53,6 +53,6 @@
           <th><%= form.submit :新規登録,class: "btn btn-primary" %></th>
         </tr>
    	    <% end %>
-      </table>
+    </table>
   </div>
 </div>

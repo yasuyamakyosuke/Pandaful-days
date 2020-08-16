@@ -1,14 +1,18 @@
 <div class ="container">
-  <div class ="row">
-    <div class ="col-xs-3">
-  	  <h2>店舗詳細ページ</h2>
-  	    <%= attachment_image_tag @shop, :main,size: "150x150" %><br><br>
-  	    <% @shop.shop_images.each do |image| %>
-  	      <%= attachment_image_tag image, :image,size: "150x150" %>
-  	    <% end %>
+  <div class ="row m-3">
+    <p class ="content1" >
+  	  <h2><%= @shop.shop_name %>の店舗詳細ページ</h2>
+    </p>
+  </div>
+  <div class ="row m-3">
+    <div class ="col-md-3">
+  	  <%= attachment_image_tag @shop, :main,size: "200x200" %><br><br>
+  	  <% @shop.shop_images.each do |image| %>
+  	    <%= attachment_image_tag image, :image,size: "200x200" %>
+  	  <% end %>
     </div>
 
-    <div class ="col-xs-9">
+    <div class ="col-md-9">
       <table class ='table'>
    	    <tr>
    	      <th scope="col" class="text-nowrap">店名</th>
@@ -44,15 +48,17 @@
    	    </tr>
        	<tr>
    	      <th scope="col" class="text-nowrap">店ステータス</th>
-   	      <td><% if @shop.shop_quit %>
-   	 	        <div>有効</div>
-   	 	        <% else %>
-   	 	        <div>無効</div>
-   	 	        <% end %>
+   	      <td>
+            <% if @shop.shop_quit %>
+   	 	        有効
+   	 	      <% else %>
+   	 	        無効
+   	 	      <% end %>
    	      </td>
    	    </tr>
       </table>
      <%= link_to "編集", edit_admin_shop_path(@shop.id),class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
 
