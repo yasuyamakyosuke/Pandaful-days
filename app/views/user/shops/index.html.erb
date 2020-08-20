@@ -1,10 +1,10 @@
 <section class="sct-color-1 slice">
-  <div class="container-fluid masonry-container">
+  <div class="container-fluid masonry-container pb-3">
     <div class ="row justify-content-center">
       <div class ="my-sm-0">
        <% if @shops.empty? %>
            <h2>検索条件のパン屋がありませんでした</h2><br>
-           <%= image_tag 'shazaipanda.jpeg',size: "400x500" %><br>
+           <%= image_tag 'shazaipanda.png',size: "500x500" %>
            <h3>申し訳ございません条件を変更し再度検索してください</h3><br>
            →<%= link_to "検索条件を変更して再検索する",shop_search_path %>
        <% else %><h2>検索結果一覧</h2>
@@ -22,8 +22,9 @@
        <% end %>
       <div class="col-md-6 offset-md-3  ">
         <% @shops.each do |shop| %>
-        <div class ="search bg-light" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 20px; height: auto;">
-    <div class="row py-3">
+          <div class="memo" style="padding: 10px; margin-top: 20px; height: auto;">
+          <span class="masking-tape bg-light"></span>
+              <div class="row py-3">
       <div class="col-md-4 ">
         <%= attachment_image_tag shop, :main, size: "200x200", format: "jpeg" %>
       </div>
