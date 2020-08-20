@@ -15,6 +15,7 @@
  */
 @import "bootstrap";
 
+
 /**
  * 01/28/2016
  * This pen is years old, and watching at the code after all
@@ -147,4 +148,12 @@ body {
 .text_font {
     font-family: 'Comic Sans MS';
 }
+.container{
+  height: 200px;
+}
 
+.b{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

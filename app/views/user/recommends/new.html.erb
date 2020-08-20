@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <th><%= form.label :オススメポイント %></th>
-            <td><%= form.text_area :recommend_shop_profile,rows:'5' %></td>
+            <td><%= form.text_area :recommend_shop_profile,:size=>"50x5" %></td>
           </tr>
           <tr>
             <th><%= form.label :ジャンル %></th>
@@ -36,7 +36,7 @@
             <td><%= form.text_field :recommend_shop_homepage %></td>
           </tr>
           <tr>
-            <th><%= form.submit :送信する %></th>
+            <th><%= form.submit :送信する,class: "btn btn-primary" %></th>
           </tr>
         <% end %>
       </table>
