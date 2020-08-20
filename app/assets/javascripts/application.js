@@ -16,8 +16,3 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
-$(function() {
-    $('.a').slick({
-        dots: true,
-    });
-});
