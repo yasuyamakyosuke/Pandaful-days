@@ -4,7 +4,9 @@
   </div>
   <div class ="row">
     <div class ="col-md-3 d-flex align-items-center" style="height: 300px">
-      <%= attachment_image_tag @user, :image,size: "150x150", fallback: "download.png" %>
+      <div class ="user_image">
+        <%= attachment_image_tag @user, :image,size: "150x150", fallback: "download.png" %>
+      </div>
     </div>
     <div class ="col-md-9 d-flex align-items-center">
       <table class ='table'>
@@ -22,24 +24,25 @@
         <th>自己紹介文</th>
         <td><%= @user.profile %></td>
       </tr>
-         <% if @user.id == current_user.id %>
-           <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
+      <th>  <% if @user.id == current_user.id %>
+            <%= link_to "編集する", edit_user_path(@user.id),data: { "turbolinks"=> false } %>
+      </th>
          <% end %>
     </table>
   </div>
 
- </div>
-  <div class ="row">
-    <div class ="col-md-8　d-flex align-items-center">
+  </div>
+  <div class ="row justify-content-center">
+    <div class ="col-md-7">
     <table class ='table'>
-      <div>お気に入り店舗</div>
+      <div>My Shop一覧</div>
       <% @user.favorites.each do |favorite| %>
        <tr>
          <th><%= link_to favorite.shop.shop_name, shop_path(favorite.shop.id) %></th>
+         <td><%= favorite.shop.genre.genre_name %>
        </tr>
        <% end %>
     </table>
   </div>
-
   </div>
 </div>

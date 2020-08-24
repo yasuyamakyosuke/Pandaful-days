@@ -30,6 +30,7 @@
               <li class="list-items"><%= link_to '検索する', shop_search_path, class: 'nav-link' %></li>
               <li class="list-items"><%= link_to 'ログアウト',  destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
              <% else %>
+              <li class="nav-item"><%= link_to 'PandafulDaysとは', home_about_path, class: 'nav-link' %></li>
               <li class="list-items"><%= link_to '検索する', shop_search_path, class: 'nav-link' %></li>
               <li class="list-items"><%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %></li>
               <li class="list-items"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>

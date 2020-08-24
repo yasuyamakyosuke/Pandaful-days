@@ -9,12 +9,18 @@
 
 <div class="container">
 　<div class="row">
-   <div class="col-md-4">
-     <h2>詳細な検索機能</h2>
-     <div>駅、ジャンル、店名と自分好みの</div>
-     <div>条件で検索可能！</div>
+    <div class="col-md-4">
+      <div class="circle">
+        <%= image_tag 'icon_000411_64.png',size: "70x70" %>
+      </div>
+      <h2>詳細な検索機能</h2>
+      <div>駅、ジャンル、店名と自分好みの</div>
+      <div>条件で検索可能！</div>
    </div>
    <div class="col-md-4">
+      <div class="circle2">
+        <%= image_tag 'icon_140221_64.png',size: "70x70" %>
+      </div>
      <h2>Myshop機能</h2>
      <div>自分で行きたいお店、お気に入りの</div>
      <div>お店をMyshopに登録可能</div>
@@ -22,17 +28,21 @@
      <div>行きたいお店を増やそう</div>
   </div>
   <div class="col-md-4">
-    <h2>何を描くか検討中</h2>
-    <div>何がいいんでしょうか？</div>
-    <div>アプリについて</div>
-    <div>どうしましょ</div>
+      <div class="circle3">
+        <%= image_tag 'icon_114301_64.png',size: "70x70" %>
+      </div>
+    <h2>フォロー機能</h2>
+    <div>現在は実装されておりません</div>
+    <div>今週中には実装します</div>
+    <div>よろしく</div>
   </div>
   <div class="col-md-12 text-center">
     <div class="my-5">
-    <div>しかし私達の知らない素敵なパンはきっとたくさんあります</div>
+    <div><h4>このアプリであなたが食べたいパンが見つかることでしょう</h4></div>
+    <div><h4>しかし私達の知らない素敵なパンはきっとたくさんあります</h4></div>
     <div>
       <% if user_signed_in? %>
-        <%= link_to "あなたのお勧めのパン屋を教えてください！",new_recommend_path %>
+        <%= link_to "もしよろしければあなたのお勧めのパン屋を教えてください！",new_recommend_path %>
       <% else %>
         <%= link_to "会員登録してあなたのお勧めのパン屋を教えてください！",new_user_registration_path %>
       <% end %>
