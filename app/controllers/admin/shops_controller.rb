@@ -7,7 +7,7 @@ class Admin::ShopsController < ApplicationController
 	def new
 	    @shop_new = Shop.new
 		if  params[:recommend_id]
-			recommend = Recommend.find(params[:recommend_id])
+	        recommend = Recommend.find(params[:recommend_id])
 			@shop_new.shop_name = recommend.recommend_shop_name
 			@shop_new.shop_address = recommend.recommend_shop_address
 			@shop_new.shop_homepage = recommend.recommend_shop_homepage

@@ -74,7 +74,11 @@
               </div>
               <div class="comment-text">
                 <div class="comment-author clearfix">
-                  <%= link_to shop_comment.user.name,user_path(shop_comment.user.id) %>
+                  <% if user_signed_in? %>
+                    <%= link_to shop_comment.user.name,user_path(shop_comment.user.id) %>
+                  <% else %>
+                    <% shop_comment.user.name %>
+                  <% end %>
                   <span class="comment-meta">
                     <span class="comment-date"><%= shop_comment.created_at.strftime('%Y/%m/%d') %>
                   </span>

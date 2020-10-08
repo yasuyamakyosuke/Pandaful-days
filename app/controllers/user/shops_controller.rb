@@ -18,11 +18,11 @@ class User::ShopsController < ApplicationController
         }
 
 		if params[:sort_type] == 'shop_comment_count'
-			@shops = @shops.left_joins(:shop_comments)
-			  .group('shops.id')
+		    @shops = @shops.left_joins(:shop_comments)
+		    .group('shops.id')
 		elsif params[:sort_type] == 'favorites_count'
 	        @shops = @shops.left_joins(:favorites)
-	          .group('favorites.shop_id')
+	        .group('favorites.shop_id')
 	    end
 	    @shops = @shops.order(order_hash[params[:sort_type].to_sym]) if params[:sort_type].present?
         @shops = @shops.page(params[:page])

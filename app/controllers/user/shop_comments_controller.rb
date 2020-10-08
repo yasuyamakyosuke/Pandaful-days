@@ -8,9 +8,9 @@ class User::ShopCommentsController < ApplicationController
             user_id: current_user.id
         )
         if shop.save!
-           shop.average_score = ShopComment.shop_score_average(shop.id)
-           shop.save
-           redirect_to shop_path(shop)
+            shop.average_score = ShopComment.shop_score_average(shop.id)
+            shop.save
+            redirect_to shop_path(shop)
         end
 	end
 

@@ -15,13 +15,13 @@ class Admin::UsersController < ApplicationController
 	def update
 		@user = User.with_deleted.find(params[:id])
 		if  @user.update(user_params)
-		  if    @user.quit == true
+		    if  @user.quit == true
 		        @user.restore
 		        redirect_to admin_users_path
-		  else  @user.quit == false
+		    else  @user.quit == false
 			    @uset.destroy
 			    redirect_to admin_users_path
-		  end
+		    end
 		else render "edit"
 		end
 
