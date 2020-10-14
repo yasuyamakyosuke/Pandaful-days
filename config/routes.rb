@@ -22,8 +22,11 @@ Rails.application.routes.draw do
     get 'confirm' => 'users#confirm'
     delete '/users/:id' => 'users#hide',as: :hide
     resources :users, only:[:show, :edit, :update]
-    resources :relationships, only: [:create, :destroy]
-    resources :follow_relationships, only: [:create, :destroy]
+      resources :relationships, only: [:create, :destroy]
+      # エラーのためコメントアウト
+      # get 'follow' => 'relationships#follower'
+      # get 'followers' => 'relationships#followed'
+      resources :follow_relationships, only: [:create, :destroy]
     get 'recommends/thank' => 'recommends#thank'
     resources :recommends, only:[:new, :create, :index, :show, :edit, :update, :destroy]
     root :to => 'homes#top'

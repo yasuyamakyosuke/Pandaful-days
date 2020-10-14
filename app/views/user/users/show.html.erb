@@ -23,8 +23,8 @@
       </div>
     </div>
     <div class ="col-md-9 d-flex align-items-center">
-      <table class ='table'>
-   	  <tr>
+      <table class="table table-borderless">
+   	   <tr style="border:none;">
    	    <th>名前</th>
    	    <td><%= @user.name %></td>
    	  </tr>
@@ -57,7 +57,8 @@
       <% @user.favorites.each do |favorite| %>
        <tr>
          <th><%= link_to favorite.shop.shop_name, shop_path(favorite.shop.id) %></th>
-         <td><%= favorite.shop.genre.genre_name %>
+         <td><%= favorite.shop.genre.genre_name %></td>
+         <td><%= favorite.shop.station.station_name %></td>
        </tr>
        <% end %>
     </table>

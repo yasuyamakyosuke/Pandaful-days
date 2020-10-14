@@ -23,9 +23,21 @@ class User::RelationshipsController < ApplicationController
       end
   end
 
+  def follower #follower一覧
+      user = User.find(params[:user_id])
+      @users = user.following_user
+    # .follower_userメソッド ：Userモデルで定義済
+  end
+
+  def followed #followed一覧
+      user = User.find(params[:user_id])
+      @users = user.follower_user
+    # .follower_userメソッド ：Userモデルで定義済
+  end
+
   private
-    def set_user
-        @user = User.find params[:follow_id]
-    end
+      def set_user
+          @user = User.find params[:follow_id]
+      end
 
 end
