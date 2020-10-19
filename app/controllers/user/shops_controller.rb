@@ -9,7 +9,7 @@ class User::ShopsController < ApplicationController
 	    @shops = @shops.where("shop_name like ?", "%#{params[:name]}%") if params[:name].present?
 		@shops = @shops.where(genre_id: params[:genre_id]) if params[:genre_id].present?
 		@shops = @shops.where(station_id: params[:station_id]) if params[:station_id].present?
-
+        @shop_count = @shops.count
         order_hash = {
         	'shop_comment_count': 'count(shop_comments.shop_id) desc',
         	'favorites_count': 'count(favorites.shop_id) desc',

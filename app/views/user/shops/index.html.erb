@@ -7,7 +7,7 @@
            <%= image_tag 'shazaipanda.png',size: "500x500" %>
            <h3>申し訳ございません条件を変更し再度検索してください</h3><br>
            →<%= link_to "検索条件を変更して再検索する",shop_search_path %>
-       <% else %><h2>検索結果一覧</h2>
+       <% else %><h2>検索結果一覧<%= @shop_count %></h2>
       </div>
     </div>
     <div class ="row justify-content-center">
