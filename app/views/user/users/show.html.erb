@@ -1,6 +1,14 @@
 <div class ="container">
   <div class ="row">
     <h2><%= @user.name %>さんの会員情報詳細</h2><br>
+
+  </div>
+
+  <div class ="row">
+    <div class ="col-md-3 d-flex align-items-center" style="height: 300px">
+      <div class ="user_image">
+        <%= attachment_image_tag @user, :image,size: "150x150", fallback: "download.png" %>
+      </div>
         <% unless current_user == @user %>
           <% if current_user.following?(@user) %>
             <%= form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
@@ -14,13 +22,9 @@
             <% end %>
           <% end %>
         <% end %>
-  </div>
-
-  <div class ="row">
-    <div class ="col-md-3 d-flex align-items-center" style="height: 300px">
-      <div class ="user_image">
-        <%= attachment_image_tag @user, :image,size: "150x150", fallback: "download.png" %>
-      </div>
+        <% @user.followers.each do |user| %>
+          <%= user.followers %>
+        <% end %>
     </div>
     <div class ="col-md-9 d-flex align-items-center">
       <table class="table table-borderless">
@@ -30,12 +34,12 @@
    	  </tr>
       <% if user = current_user %>
    	  <tr>
-   	    <th>メールアドレス</th>
+   	    <th th scope="col" class="text-nowrap">メールアドレス</th>
    	    <td><%= @user.email %></td>
     	</tr>
       <% end %>
       <tr>
-        <th>自己紹介文</th>
+        <th th scope="col" class="text-nowrap">自己紹介文</th>
         <td><%= @user.profile %></td>
       </tr>
       <th>
