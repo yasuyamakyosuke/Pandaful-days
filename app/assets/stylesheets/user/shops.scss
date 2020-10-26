@@ -161,6 +161,7 @@
 }
 .container-fluid {
   padding-top: 100px;
+  min-height: 100vh;
   background-image: image-url("background_tree.jpg");
   background-size:cover;
   background-position: center;
